@@ -10,28 +10,71 @@
     "build-only": "vite build",
     "type-check": "vue-tsc --noEmit -p tsconfig.vitest.json --composite false",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore",
-    "format": "prettier --write src/"
+    "commit": "git add . && cz-customizable",
+    "format": "prettier --write src/",
+    "prepare": "husky install"
+  },
+  "config": {
+    "commitizen": {
+      "path": [
+        "@commitlint/cz-commitlint",
+        "cz-customizable"
+      ]
+    }
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "cz-commitlint -E HUSKY_GIT_PARAMS",
+      "pre-commit": "pretty-quick --staged"
+    }
+  },
+  "lint-staged": {
+    "*.{vue,js,ts,jsx,tsx}": "eslint --fix",
+    "*.{*.vue,less,postcss,css,scss}": "stylelint --fix"
   },
   "dependencies": {
     "pinia": "^2.0.32",
     "vue": "^3.2.47",
-    "vue-router": "^4.1.6"
+    "vue-router": "^4.1.6",
+    "wujie-vue3": "1.0.6"
   },
   "devDependencies": {
+    "@commitlint/cli": "17.4.4",
+    "@commitlint/config-conventional": "17.4.4",
+    "@commitlint/cz-commitlint": "17.4.4",
     "@rushstack/eslint-patch": "^1.2.0",
     "@types/jsdom": "^21.1.0",
     "@types/node": "^18.14.2",
+    "@typescript-eslint/eslint-plugin": "5.54.0",
+    "@typescript-eslint/parser": "5.54.0",
     "@vitejs/plugin-vue": "^4.0.0",
     "@vitejs/plugin-vue-jsx": "^3.0.0",
     "@vue/eslint-config-prettier": "^7.1.0",
     "@vue/eslint-config-typescript": "^11.0.2",
     "@vue/test-utils": "^2.3.0",
     "@vue/tsconfig": "^0.1.3",
+    "commitizen": "4.3.0",
+    "cz-customizable": "7.0.0",
     "eslint": "^8.34.0",
+    "eslint-config-prettier": "8.6.0",
+    "eslint-define-config": "1.15.0",
+    "eslint-plugin-import": "2.27.5",
+    "eslint-plugin-node": "11.1.0",
+    "eslint-plugin-prettier": "4.2.1",
+    "eslint-plugin-promise": "6.1.1",
     "eslint-plugin-vue": "^9.9.0",
+    "husky": "8.0.3",
     "jsdom": "^21.1.0",
+    "lint-staged": "13.1.2",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.8.4",
+    "pretty-quick": "3.1.3",
+    "stylelint": "15.2.0",
+    "stylelint-config-prettier": "9.0.5",
+    "stylelint-config-recommended": "10.0.1",
+    "stylelint-config-recommended-vue": "1.4.0",
+    "stylelint-config-standard": "30.0.1",
+    "stylelint-order": "6.0.2",
     "typescript": "~4.8.4",
     "vite": "^4.1.4",
     "vitest": "^0.29.1",
