@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import TheWelcome from '../components/TheWelcome.vue'
+import { ref } from 'vue'
+import hostMap from '@/utils/hostMap'
+const vue3Url = ref(hostMap('//localhost:5171/'))
 </script>
 
 <template>
-  <main>
-    <TheWelcome />
-  </main>
+  <WujieVue width="100%" height="100%" name="vue3" :url="vue3Url" :sync="true"></WujieVue>
 </template>
