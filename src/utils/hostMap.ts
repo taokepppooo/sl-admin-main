@@ -1,6 +1,7 @@
 const map: Record<string, string> = {
   '//localhost:5171/': '//localhost:5171/',
-  '//localhost:5172/': '//localhost:5172/'
+  '//localhost:5172/': '//localhost:5172/',
+  '//localhost:5173/': '//localhost:5173/'
 }
 
 export default function hostMap(host: string): string {
