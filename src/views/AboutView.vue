@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import hostMap from '@/utils/hostMap'
-const reactUrl = ref(hostMap('//localhost:3000/'))
+const reactUrl = ref(hostMap('//localhost:5172/'))
 </script>
 
 <template>
