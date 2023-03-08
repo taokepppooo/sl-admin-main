@@ -5,3 +5,6 @@ dist
 .vscode/*
 !.vscode/extensions.json
 !.vscode/setting.json
+
+auto-imports.d.ts
+components.d.ts
