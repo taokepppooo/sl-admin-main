@@ -1,12 +1,18 @@
 <template>
-  <div>
-    <aside>
-      <Menu></Menu>
-    </aside>
-    <section>
-      <HeaderNav></HeaderNav>
-      <PageView></PageView>
-    </section>
+  <div class="common-layout">
+    <ElContainer>
+      <ElAside>
+        <Menu></Menu>
+      </ElAside>
+      <ElContainer>
+        <ElHeader>
+          <HeaderNav></HeaderNav>
+        </ElHeader>
+        <ElMain>
+          <PageView></PageView>
+        </ElMain>
+      </ElContainer>
+    </ElContainer>
   </div>
 </template>
 

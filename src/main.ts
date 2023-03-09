@@ -6,7 +6,7 @@ import App from './App.vue'
 import router from './router'
 
 import 'normalize.css'
-import './assets/main.less'
+import '@/assets/index.less'
 
 // const { bus, setupApp, preloadApp, destroyApp } = WujieVue
 
