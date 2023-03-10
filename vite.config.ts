@@ -13,15 +13,7 @@ export default defineConfig({
     vueJsx(),
     AutoImport({
       resolvers: [ElementPlusResolver()],
-      imports: [
-        'vue',
-        'vue-router',
-        {
-          from: 'vue-router',
-          imports: ['RouteLocationRaw'],
-          type: true
-        }
-      ]
+      imports: ['vue', 'vue-router']
     }),
     Components({
       resolvers: [ElementPlusResolver()]

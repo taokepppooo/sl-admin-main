@@ -2,14 +2,14 @@
   <div class="common-layout">
     <ElContainer>
       <ElAside>
-        <Menu></Menu>
+        <LayoutMenu></LayoutMenu>
       </ElAside>
       <ElContainer>
         <ElHeader>
-          <HeaderNav></HeaderNav>
+          <LayoutHeaderNav></LayoutHeaderNav>
         </ElHeader>
         <ElMain>
-          <PageView></PageView>
+          <LayoutPageView></LayoutPageView>
         </ElMain>
       </ElContainer>
     </ElContainer>
