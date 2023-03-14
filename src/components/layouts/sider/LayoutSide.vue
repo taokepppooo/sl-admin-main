@@ -1,7 +1,7 @@
 <script setup lang="ts"></script>
 
 <template>
-  <div></div>
+  <LayoutMenu></LayoutMenu>
 </template>
 
-<style lang="less" scoped></style>
+<style lang="less"></style>

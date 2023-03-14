@@ -1,7 +1,7 @@
-export const createContext = (context: any, key: InjectionKey<any> = Symbol()) => {
+export const createContext = <T>(context: T, key: InjectionKey<T> = Symbol()) => {
   provide(key, context)
 }
 
-export const useContext = (key: InjectionKey<any> = Symbol()) => {
-  return inject(key)
+export const useContext = <T>(key: InjectionKey<T> = Symbol(), defaultValue?: T) => {
+  return inject(key, defaultValue)
 }

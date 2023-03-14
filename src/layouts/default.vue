@@ -2,14 +2,14 @@
   <div class="common-layout">
     <ElContainer>
       <ElAside>
-        <LayoutMenu></LayoutMenu>
+        <LayoutSide></LayoutSide>
       </ElAside>
       <ElContainer>
         <ElHeader>
-          <LayoutHeaderNav></LayoutHeaderNav>
+          <LayoutHeader></LayoutHeader>
         </ElHeader>
         <ElMain>
-          <LayoutPageView></LayoutPageView>
+          <LayoutMain></LayoutMain>
         </ElMain>
       </ElContainer>
     </ElContainer>
@@ -17,4 +17,5 @@
 </template>
 
 <script setup lang="ts"></script>
-<style lang="less" scoped></style>
+
+<style lang="less"></style>

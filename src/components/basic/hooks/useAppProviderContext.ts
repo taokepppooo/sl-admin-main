@@ -1,11 +1,15 @@
-/* import { createContext, useContext } from '@/hooks/core/useContext'
+import { createContext, useContext } from '@/hooks/core/useContext'
 
-const key: InjectionKey<any> = Symbol() */
+export interface AppProviderContext {
+  prefixCls: string
+}
 
-export const createAppProviderContext = () => {
-  // createContext()
+const key: InjectionKey<any> = Symbol()
+
+export const createAppProviderContext = (context: AppProviderContext) => {
+  createContext(context, key)
 }
 
 export const useAppProviderContext = () => {
-  // useContext()
+  return useContext(key)
 }

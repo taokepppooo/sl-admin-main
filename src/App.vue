@@ -12,4 +12,4 @@ const locale = zhCn
   </ElConfigProvider>
 </template>
 
-<style scoped></style>
+<style></style>
