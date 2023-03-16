@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { prefixCls } from '@/types/style/settings'
 import { createAppProviderContext } from '@/components/basic/hooks/useAppProviderContext'
+import { AppEnum } from '@/enums/setting'
 
-createAppProviderContext({ prefixCls })
+createAppProviderContext({ prefixCls: AppEnum.PREFIX_CLS })
 </script>
 
 <template>

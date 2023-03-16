@@ -54,9 +54,10 @@ const menu = reactive<LayoutMenu[]>([
 <template>
   <div>
     <ElMenu
+      style="width: 210px"
       :class="prefixCls"
       active-text-color="#ffd04b"
-      background-color="#545c64"
+      background-color="#001529"
       default-active="1"
       text-color="#fff"
     >
