@@ -1,22 +1,37 @@
 @prefix-cls: ~'@{namespace}-basic-menu';
-.@{prefix-cls} {
-  height: 100vh;
+@scroll-prefix-cls: ~'@{namespace}-basic-menu-scroll';
 
-  .el-menu {
-    width: 100%;
-    background-color: var(--el-menu-sub-bg-color);
+.@{scroll-prefix-cls} {
+  .el-scrollbar__view {
+    height: inherit;
   }
 
-  .el-sub-menu__title:hover,
-  .el-menu-item:hover {
-    color: var(--el-menu-hover-color);
-  }
+  .@{prefix-cls} {
+    height: 100%;
 
-  .el-menu-item:hover {
-    background-color: unset;
-  }
+    & > .el-sub-menu > .el-sub-menu__title {
+      background-color: var(--el-menu-bg-color);
+    }
 
-  .el-menu-item.is-active {
-    background-color: var(--el-menu-active-bg-color);
+    .el-menu {
+      background-color: var(--el-menu-sub-bg-color);
+    }
+
+    .el-sub-menu__title {
+      background-color: var(--el-menu-sub-bg-color);
+    }
+
+    .el-sub-menu__title:hover,
+    .el-menu-item:hover {
+      color: var(--el-menu-hover-color);
+    }
+
+    .el-menu-item:hover {
+      background-color: unset;
+    }
+
+    .el-menu-item.is-active {
+      background-color: var(--el-menu-active-bg-color);
+    }
   }
 }

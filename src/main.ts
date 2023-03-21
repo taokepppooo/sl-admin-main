@@ -1,6 +1,6 @@
 import { createApp } from 'vue'
-import { createPinia } from 'pinia'
 import WujieVue from 'wujie-vue3'
+import { setupStore } from '@/store'
 
 import App from './App.vue'
 import router from './router'
@@ -12,7 +12,8 @@ import '@/assets/index.less'
 
 const app = createApp(App)
 
-app.use(createPinia())
+setupStore(app)
+
 app.use(router)
 app.use(WujieVue)
 

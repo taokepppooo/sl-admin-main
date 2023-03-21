@@ -1,4 +1,4 @@
-import { useAppProviderContext } from '@/components/basic/hooks/useAppProviderContext'
+import { useAppProviderContext } from '@/components/basic/src/useAppProviderContext'
 export const useNameSpace = (scope: string) => {
   const values = useAppProviderContext()
 

@@ -1,7 +1,11 @@
 <script setup lang="ts">
 import { useNameSpace } from '@/hooks/core/useStyle'
+import { initSetting } from './src/useBasicMenu'
 import type { LayoutMenu } from '@/hooks/layout/useLayoutMenu'
 
+initSetting()
+
+const { prefixCls: scrollPrefixCls } = useNameSpace('basic-menu-scroll')
 const { prefixCls } = useNameSpace('basic-menu')
 const menu = reactive<LayoutMenu[]>([
   {
@@ -100,7 +104,7 @@ const menu = reactive<LayoutMenu[]>([
 </script>
 
 <template>
-  <ElScrollbar>
+  <ElScrollbar :class="scrollPrefixCls">
     <ElMenu :class="prefixCls" default-active="1">
       <LayoutMenuItems :menu="menu"></LayoutMenuItems>
     </ElMenu>

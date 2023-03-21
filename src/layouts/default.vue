@@ -1,5 +1,11 @@
+<script setup lang="ts">
+import { useNameSpace } from '@/hooks/core/useStyle'
+
+const { prefixCls } = useNameSpace('layouts-default')
+</script>
+
 <template>
-  <div class="common-layout">
+  <div :class="prefixCls">
     <ElContainer>
       <ElAside>
         <LayoutSide></LayoutSide>
@@ -16,6 +22,13 @@
   </div>
 </template>
 
-<script setup lang="ts"></script>
+<style lang="less">
+@prefix-cls: ~'@{namespace}-layouts-default';
 
-<style lang="less"></style>
+.@{prefix-cls} {
+  .el-aside {
+    width: 210px;
+    height: 100vh;
+  }
+}
+</style>
