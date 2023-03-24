@@ -12,7 +12,6 @@ export class Cache {
     return localStorage.getItem(key)
   }
   static setLocal(key: LocalKeys, value: LocalStore[LocalKeys]) {
-    console.log(toRaw(value))
     localStorage.setItem(key, value)
   }
   static removeLocal(key: LocalKeys) {
