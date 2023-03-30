@@ -1,5 +1,5 @@
 import { useAppStore } from '@/store/modules/app'
-import type { Setting, MenuSetting } from '#/settings'
+import type { MenuSetting } from '#/settings'
 
 export const initSetting = () => {
   const appStore = useAppStore()
@@ -8,5 +8,5 @@ export const initSetting = () => {
     menuSetting: {
       collapsed: true
     } as MenuSetting
-  } as Setting)
+  })
 }

@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia'
 import { deepClone } from '@/utils'
-import { Cache } from '@/utils/cache'
+import { createLocalCache } from '@/utils/cache'
 import { SETTING_KEY } from '@/enums/cache'
 import type { Setting, MenuSetting } from '#/settings'
 
@@ -21,7 +21,7 @@ export const useAppStore = defineStore({
   actions: {
     setSetting(config: Setting): void {
       this.setting = deepClone(this.setting || {}, config)
-      Cache.setLocal(SETTING_KEY, this.setting)
+      createLocalCache().setItem(SETTING_KEY, this.setting)
     }
   }
 })

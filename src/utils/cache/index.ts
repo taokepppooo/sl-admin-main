@@ -1,23 +1,52 @@
+import { StorageCache, createSessionStorage, createLocalStorage } from './storageCache'
 import type { SETTING_KEY } from '@/enums/cache'
 import type { Setting } from '#/settings'
 
-interface LocalStore {
+export interface CacheOptions {
+  storage: StorageCache
+}
+
+export interface LocalStore {
   [SETTING_KEY]: Setting
 }
 
-type LocalKeys = keyof LocalStore
+export interface SessionStore {
+  [SETTING_KEY]: Setting
+}
 
-export class Cache {
-  static getLocal(key: LocalKeys) {
-    return localStorage.getItem(key)
+export class Cache<T> {
+  private static instance: Cache<any>
+  private storage: StorageCache
+
+  private constructor({ storage }: CacheOptions) {
+    this.storage = storage
   }
-  static setLocal(key: LocalKeys, value: LocalStore[LocalKeys]) {
-    localStorage.setItem(key, value)
+
+  public static getInstance<T>({ storage }: CacheOptions): Cache<T> {
+    if (!Cache.instance) {
+      Cache.instance = new Cache<T>({ storage })
+    }
+    return Cache.instance
   }
-  static removeLocal(key: LocalKeys) {
-    localStorage.removeItem(key)
+
+  getItem<K extends keyof T>(key: K) {
+    return this.storage.get(key as string)
   }
-  static clearLocal() {
-    localStorage.clear()
+  setItem<K extends keyof T>(key: K, value: object) {
+    this.storage.set(key as string, value)
   }
+  removeItem<K extends keyof T>(key: K) {
+    this.storage.remove(key as string)
+  }
+  clear() {
+    this.storage.clear()
+  }
+}
+
+export const createLocalCache = () => {
+  return Cache.getInstance<LocalStore>({ storage: createLocalStorage() })
+}
+
+export const createSessionCache = () => {
+  return Cache.getInstance<SessionStore>({ storage: createSessionStorage() })
 }
