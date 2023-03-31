@@ -1,4 +1,5 @@
-import { cloneDeep, isObject } from 'lodash-es'
+import { cloneDeep, isObject, isString } from 'lodash-es'
+import { cssUnit } from '@/share/css-unit'
 
 export const deepClone = (source: any = {}, target: any = {}) => {
   let key: string
@@ -8,4 +9,14 @@ export const deepClone = (source: any = {}, target: any = {}) => {
   }
 
   return clone
+}
+
+export const toPx = (value?: string | number) => {
+  if (!value) return undefined
+
+  if (isString(value) && cssUnit.some((unit) => value.includes(unit))) {
+    return value
+  }
+
+  return `${`${value}`.replace(/px/, '')}px`
 }

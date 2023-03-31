@@ -6,6 +6,7 @@
     "dbaeumer.vscode-eslint",
     "rvest.vs-code-prettier-eslint",
     "stylelint.vscode-stylelint",
+    "antfu.iconify",
     "sidneys1.gitconfig",
   ]
 }

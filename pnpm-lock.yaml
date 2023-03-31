@@ -4,6 +4,8 @@ specifiers:
   '@commitlint/cli': 17.4.4
   '@commitlint/config-conventional': 17.4.4
   '@commitlint/cz-commitlint': 17.4.4
+  '@iconify-json/ep': 1.1.10
+  '@iconify/vue': 4.1.0
   '@rushstack/eslint-patch': ^1.2.0
   '@types/jsdom': ^21.1.0
   '@types/node': ^18.14.2
@@ -47,6 +49,7 @@ specifiers:
   stylelint-order: 6.0.2
   typescript: ~4.8.4
   unplugin-auto-import: 0.15.1
+  unplugin-icons: 0.16.1
   unplugin-vue-components: 0.24.1
   vite: ^4.1.4
   vitest: ^0.29.1
@@ -56,6 +59,7 @@ specifiers:
   wujie-vue3: 1.0.6
 
 dependencies:
+  '@iconify/vue': registry.npmmirror.com/@iconify/vue/4.1.0_vue@3.2.47
   element-plus: registry.npmmirror.com/element-plus/2.3.1_vue@3.2.47
   normalize.css: registry.npmmirror.com/normalize.css/8.0.1
   pinia: registry.npmmirror.com/pinia/2.0.32_7h6e7cvei2rsgyre2mq4fyhehq
@@ -67,6 +71,7 @@ devDependencies:
   '@commitlint/cli': registry.npmmirror.com/@commitlint/cli/17.4.4
   '@commitlint/config-conventional': registry.npmmirror.com/@commitlint/config-conventional/17.4.4
   '@commitlint/cz-commitlint': registry.npmmirror.com/@commitlint/cz-commitlint/17.4.4_i4x6owxztfhigiiqlxwntt4k24
+  '@iconify-json/ep': registry.npmmirror.com/@iconify-json/ep/1.1.10
   '@rushstack/eslint-patch': registry.npmmirror.com/@rushstack/eslint-patch/1.2.0
   '@types/jsdom': registry.npmmirror.com/@types/jsdom/21.1.0
   '@types/node': registry.npmmirror.com/@types/node/18.14.2
@@ -107,6 +112,7 @@ devDependencies:
   stylelint-order: registry.npmmirror.com/stylelint-order/6.0.2_stylelint@15.2.0
   typescript: registry.npmmirror.com/typescript/4.8.4
   unplugin-auto-import: registry.npmmirror.com/unplugin-auto-import/0.15.1
+  unplugin-icons: registry.npmmirror.com/unplugin-icons/0.16.1
   unplugin-vue-components: registry.npmmirror.com/unplugin-vue-components/0.24.1_vue@3.2.47
   vite: registry.npmmirror.com/vite/4.1.4_wo3ja2wlu6ln7oswoqdxkdudlq
   vitest: registry.npmmirror.com/vitest/0.29.2_jsdom@21.1.0+less@4.1.3
@@ -126,6 +132,20 @@ packages:
     dependencies:
       '@jridgewell/gen-mapping': registry.npmmirror.com/@jridgewell/gen-mapping/0.1.1
       '@jridgewell/trace-mapping': registry.npmmirror.com/@jridgewell/trace-mapping/0.3.17
+    dev: true
+
+  registry.npmmirror.com/@antfu/install-pkg/0.1.1:
+    resolution:
+      {
+        integrity: sha512-LyB/8+bSfa0DFGC06zpCEfs89/XoWZwws5ygEa5D+Xsm3OfI+aXQ86VgVG7Acyef+rSZ5HE7J8rrxzrQeM3PjQ==,
+        registry: https://registry.npm.taobao.org/,
+        tarball: https://registry.npmmirror.com/@antfu/install-pkg/-/install-pkg-0.1.1.tgz
+      }
+    name: '@antfu/install-pkg'
+    version: 0.1.1
+    dependencies:
+      execa: registry.npmmirror.com/execa/5.1.1
+      find-up: registry.npmmirror.com/find-up/5.0.0
     dev: true
 
   registry.npmmirror.com/@antfu/utils/0.7.2:
@@ -1542,6 +1562,66 @@ packages:
     name: '@humanwhocodes/object-schema'
     version: 1.2.1
     dev: true
+
+  registry.npmmirror.com/@iconify-json/ep/1.1.10:
+    resolution:
+      {
+        integrity: sha512-1N3H28hbulsw3UNZjAZ1c7BhK9mLiw8VrngQc58xNQ7dnzaUgtKN81aqkrZ9ffDXcfJGL3Rk9Yc3/QrSSI24sg==,
+        registry: https://registry.npm.taobao.org/,
+        tarball: https://registry.npmmirror.com/@iconify-json/ep/-/ep-1.1.10.tgz
+      }
+    name: '@iconify-json/ep'
+    version: 1.1.10
+    dependencies:
+      '@iconify/types': registry.npmmirror.com/@iconify/types/2.0.0
+    dev: true
+
+  registry.npmmirror.com/@iconify/types/2.0.0:
+    resolution:
+      {
+        integrity: sha512-+wluvCrRhXrhyOmRDJ3q8mux9JkKy5SJ/v8ol2tu4FVjyYvtEzkc/3pK15ET6RKg4b4w4BmTk1+gsCUhf21Ykg==,
+        registry: https://registry.npm.taobao.org/,
+        tarball: https://registry.npmmirror.com/@iconify/types/-/types-2.0.0.tgz
+      }
+    name: '@iconify/types'
+    version: 2.0.0
+
+  registry.npmmirror.com/@iconify/utils/2.1.5:
+    resolution:
+      {
+        integrity: sha512-6MvDI+I6QMvXn5rK9KQGdpEE4mmLTcuQdLZEiX5N+uZB+vc4Yw9K1OtnOgkl8mp4d9X0UrILREyZgF1NUwUt+Q==,
+        registry: https://registry.npm.taobao.org/,
+        tarball: https://registry.npmmirror.com/@iconify/utils/-/utils-2.1.5.tgz
+      }
+    name: '@iconify/utils'
+    version: 2.1.5
+    dependencies:
+      '@antfu/install-pkg': registry.npmmirror.com/@antfu/install-pkg/0.1.1
+      '@antfu/utils': registry.npmmirror.com/@antfu/utils/0.7.2
+      '@iconify/types': registry.npmmirror.com/@iconify/types/2.0.0
+      debug: registry.npmmirror.com/debug/4.3.4
+      kolorist: registry.npmmirror.com/kolorist/1.7.0
+      local-pkg: registry.npmmirror.com/local-pkg/0.4.3
+    transitivePeerDependencies:
+      - supports-color
+    dev: true
+
+  registry.npmmirror.com/@iconify/vue/4.1.0_vue@3.2.47:
+    resolution:
+      {
+        integrity: sha512-rBQVxNoSDooqgWkQg2MqkIHkH/huNuvXGqui5wijc1zLnU7TKzbBHW9VGmbnV4asNTmIHmqV4Nvt0M2rZ/9nHA==,
+        registry: https://registry.npm.taobao.org/,
+        tarball: https://registry.npmmirror.com/@iconify/vue/-/vue-4.1.0.tgz
+      }
+    id: registry.npmmirror.com/@iconify/vue/4.1.0
+    name: '@iconify/vue'
+    version: 4.1.0
+    peerDependencies:
+      vue: '>=3'
+    dependencies:
+      '@iconify/types': registry.npmmirror.com/@iconify/types/2.0.0
+      vue: registry.npmmirror.com/vue/3.2.47
+    dev: false
 
   registry.npmmirror.com/@jridgewell/gen-mapping/0.1.1:
     resolution:
@@ -7390,7 +7470,7 @@ packages:
     dependencies:
       universalify: registry.npmmirror.com/universalify/2.0.0
     optionalDependencies:
-      graceful-fs: registry.npmmirror.com/graceful-fs/4.2.10
+      graceful-fs: registry.npmmirror.com/graceful-fs/4.2.11
     dev: true
 
   registry.npmmirror.com/jsonparse/1.3.1:
@@ -7426,6 +7506,17 @@ packages:
       }
     name: known-css-properties
     version: 0.26.0
+    dev: true
+
+  registry.npmmirror.com/kolorist/1.7.0:
+    resolution:
+      {
+        integrity: sha512-ymToLHqL02udwVdbkowNpzjFd6UzozMtshPQKVi5k1EjKRqKqBrOnE9QbLEb0/pV76SAiIT13hdL8R6suc+f3g==,
+        registry: https://registry.npm.taobao.org/,
+        tarball: https://registry.npmmirror.com/kolorist/-/kolorist-1.7.0.tgz
+      }
+    name: kolorist
+    version: 1.7.0
     dev: true
 
   registry.npmmirror.com/less/4.1.3:
@@ -11357,7 +11448,7 @@ packages:
       pkg-types: registry.npmmirror.com/pkg-types/1.0.2
       scule: registry.npmmirror.com/scule/1.0.0
       strip-literal: registry.npmmirror.com/strip-literal/1.0.1
-      unplugin: registry.npmmirror.com/unplugin/1.1.0
+      unplugin: registry.npmmirror.com/unplugin/1.3.1
     transitivePeerDependencies:
       - rollup
     dev: true
@@ -11416,6 +11507,41 @@ packages:
       - rollup
     dev: true
 
+  registry.npmmirror.com/unplugin-icons/0.16.1:
+    resolution:
+      {
+        integrity: sha512-qTunFUkpAyDnwzwV7YV1ZgCWRYfLuURcCurhhXOWMy2ipY88qx1pADvral2hJu4Xymh0X0t3Zcll3BIru2AVLQ==,
+        registry: https://registry.npm.taobao.org/,
+        tarball: https://registry.npmmirror.com/unplugin-icons/-/unplugin-icons-0.16.1.tgz
+      }
+    name: unplugin-icons
+    version: 0.16.1
+    peerDependencies:
+      '@svgr/core': '>=7.0.0'
+      '@vue/compiler-sfc': ^3.0.2 || ^2.7.0
+      vue-template-compiler: ^2.6.12
+      vue-template-es2015-compiler: ^1.9.0
+    peerDependenciesMeta:
+      '@svgr/core':
+        optional: true
+      '@vue/compiler-sfc':
+        optional: true
+      vue-template-compiler:
+        optional: true
+      vue-template-es2015-compiler:
+        optional: true
+    dependencies:
+      '@antfu/install-pkg': registry.npmmirror.com/@antfu/install-pkg/0.1.1
+      '@antfu/utils': registry.npmmirror.com/@antfu/utils/0.7.2
+      '@iconify/utils': registry.npmmirror.com/@iconify/utils/2.1.5
+      debug: registry.npmmirror.com/debug/4.3.4
+      kolorist: registry.npmmirror.com/kolorist/1.7.0
+      local-pkg: registry.npmmirror.com/local-pkg/0.4.3
+      unplugin: registry.npmmirror.com/unplugin/1.3.1
+    transitivePeerDependencies:
+      - supports-color
+    dev: true
+
   registry.npmmirror.com/unplugin-vue-components/0.24.1_vue@3.2.47:
     resolution:
       {
@@ -11462,6 +11588,22 @@ packages:
       }
     name: unplugin
     version: 1.1.0
+    dependencies:
+      acorn: registry.npmmirror.com/acorn/8.8.2
+      chokidar: registry.npmmirror.com/chokidar/3.5.3
+      webpack-sources: registry.npmmirror.com/webpack-sources/3.2.3
+      webpack-virtual-modules: registry.npmmirror.com/webpack-virtual-modules/0.5.0
+    dev: true
+
+  registry.npmmirror.com/unplugin/1.3.1:
+    resolution:
+      {
+        integrity: sha512-h4uUTIvFBQRxUKS2Wjys6ivoeofGhxzTe2sRWlooyjHXVttcVfV/JiavNd3d4+jty0SVV0dxGw9AkY9MwiaCEw==,
+        registry: https://registry.npm.taobao.org/,
+        tarball: https://registry.npmmirror.com/unplugin/-/unplugin-1.3.1.tgz
+      }
+    name: unplugin
+    version: 1.3.1
     dependencies:
       acorn: registry.npmmirror.com/acorn/8.8.2
       chokidar: registry.npmmirror.com/chokidar/3.5.3

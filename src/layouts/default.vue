@@ -30,5 +30,13 @@ const { prefixCls } = useNameSpace('layouts-default')
     width: 210px;
     height: 100vh;
   }
+
+  .el-header {
+    border-bottom: 1px solid #eee;
+    height: 48px;
+    padding: 0;
+    line-height: 48px;
+    background-color: #fff;
+  }
 }
 </style>
