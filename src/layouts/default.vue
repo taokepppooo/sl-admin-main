@@ -1,13 +1,19 @@
 <script setup lang="ts">
 import { useNameSpace } from '@/hooks/core/useStyle'
+import { useAppStore } from '@/store/modules/app'
+
+const appStore = useAppStore()
 
 const { prefixCls } = useNameSpace('layouts-default')
+const menuWidth = computed(() =>
+  appStore.getMenuSetting?.collapsed ? { width: '56px' } : { width: '210px' }
+)
 </script>
 
 <template>
   <div :class="prefixCls">
     <ElContainer>
-      <ElAside>
+      <ElAside :style="menuWidth">
         <LayoutSide></LayoutSide>
       </ElAside>
       <ElContainer>
@@ -27,7 +33,6 @@ const { prefixCls } = useNameSpace('layouts-default')
 
 .@{prefix-cls} {
   .el-aside {
-    width: 210px;
     height: 100vh;
   }
 

@@ -8,7 +8,7 @@ const appStore = useAppStore()
 
 const menu = reactive<LayoutMenu[]>([
   {
-    title: '1',
+    title: '12222222222222333333333',
     icon: 'ep:unlock',
     hasChild: true,
     children: [
@@ -20,6 +20,7 @@ const menu = reactive<LayoutMenu[]>([
   },
   {
     title: '2',
+    icon: 'ep:unlock',
     hasChild: true,
     children: [
       {
