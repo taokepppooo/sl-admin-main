@@ -43,5 +43,9 @@ const menuWidth = computed(() =>
     line-height: 48px;
     background-color: #fff;
   }
+
+  .el-main {
+    padding: 0;
+  }
 }
 </style>

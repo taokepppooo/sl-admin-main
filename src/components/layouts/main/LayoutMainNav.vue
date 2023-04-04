@@ -1,7 +1,7 @@
 <script setup lang="ts"></script>
 
 <template>
-  <LayoutMainNav></LayoutMainNav>
+  <LayoutTab></LayoutTab>
 </template>
 
 <style lang="less"></style>

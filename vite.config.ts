@@ -40,8 +40,5 @@ export default defineConfig({
   },
   server: {
     port: 5170
-  },
-  optimizeDeps: {
-    include: ['@iconify/iconify']
   }
 })
