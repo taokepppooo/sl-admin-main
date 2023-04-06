@@ -63,9 +63,7 @@ const handleTabsEdit = (targetName: TabPaneName | undefined, action: 'remove' | 
       :name="item.name"
     >
       <template #label>
-        <LayoutTabItemBox>
-          {{ item.content }}
-        </LayoutTabItemBox>
+        {{ item.content }}
       </template>
       {{ item.content }}
     </el-tab-pane>
@@ -74,18 +72,71 @@ const handleTabsEdit = (targetName: TabPaneName | undefined, action: 'remove' | 
 
 <style lang="less">
 @prefix-cls: ~'@{namespace}-layout-tab';
+@base64-tab-item: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAANoAAAAkBAMAAAAdqzmBAAAAMFBMVEVHcEwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlTPQ5AAAAD3RSTlMAr3DvEM8wgCBA379gj5//tJBPAAAAnUlEQVRIx2NgAAM27fj/tAO/xBsYkIHyf9qCT8iWMf6nNQhAsk2f5rYheY7Dnua2/U+A28ZEe8v+F9Ax2v7/F4DbxkUH2wzgtvHTwbYPo7aN2jZq26hto7aN2jZq25Cy7Qvctnw62PYNbls9HWz7S8/G6//PsI6H4396gAUQy1je08W2jxDbpv6nD4gB2uWp+J9eYPsEhv/0BPS1DQBvoBLVZ3BppgAAAABJRU5ErkJggg==');
+
+.mask {
+  -webkit-mask: @base64-tab-item;
+  -moz-osx-mask: @base64-tab-item;
+  mask: @base64-tab-item;
+  mask-size: 100% 100%;
+  -webkit-mask-size: 100% 100%;
+  -moz-osx-mask-size: 100% 100%;
+}
 
 .@{prefix-cls} {
+  margin-top: 5px;
+
   .el-tabs__header {
     margin: 0;
     border: unset;
+    padding: 0 8px;
 
     .el-tabs__nav {
       border: unset;
-    }
+      display: inline-block;
+      width: auto;
+      padding: 0 8px;
 
-    .el-tabs__item {
-      border-left: unset;
+      .el-tabs__item {
+        border: unset;
+        height: 38px;
+        line-height: 38px;
+        padding: 0 30px;
+
+        &:not(:first-child) {
+          margin-left: -22px;
+        }
+
+        &.is-active {
+          .mask();
+
+          background: var(--el-color-primary-light-9);
+          position: relative;
+          z-index: 2;
+        }
+
+        &:not(.is-active):hover {
+          .mask();
+
+          position: relative;
+          z-index: 1;
+          background: var(--el-nav-tab-item-hover-bg);
+          color: var(--el-nav-tab-item-hover-color);
+        }
+
+        &:not(.is-active).is-closable:hover {
+          padding-left: 30px;
+          padding-right: 25px;
+        }
+
+        &:nth-child(2):not(.is-active).is-closable:hover {
+          padding-left: 30px;
+        }
+
+        .is-icon-close {
+          display: inline-block;
+        }
+      }
     }
   }
 

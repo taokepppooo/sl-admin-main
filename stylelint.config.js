@@ -5,7 +5,7 @@ module.exports = {
   extends: ['stylelint-config-standard', 'stylelint-config-prettier'],
   customSyntax: 'postcss-html',
   rules: {
-    'value-no-vendor-prefix': [true, { ignoreValues: ['box'] }],
+    'property-no-vendor-prefix': null,
     'function-no-unknown': null,
     'selector-class-pattern': null,
     'selector-pseudo-class-no-unknown': [

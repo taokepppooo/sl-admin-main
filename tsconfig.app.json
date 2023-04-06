@@ -13,6 +13,7 @@
   ],
   "exclude": ["src/**/__tests__/*"],
   "compilerOptions": {
+    "ignoreDeprecations": "5.0",
     "jsx": "preserve",
     "target": "ESNext",
     "module": "ESNext",
