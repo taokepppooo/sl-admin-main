@@ -4,7 +4,13 @@ import type { CSSProperties, PropType } from 'vue'
 
 const { prefixCls } = useNameSpace('layout-tab-item-box')
 
+const emit = defineEmits<{
+  (e: 'removeTab', target: string): void
+}>()
+
 const props = defineProps({
+  label: { type: String, required: true },
+  target: { type: String, required: true },
   itemStyle: { type: Object as PropType<CSSProperties> }
 })
 
@@ -17,11 +23,28 @@ const itemStyle = reactive<CSSProperties>({
   ...defaultItemStyle,
   ...(props.itemStyle || {})
 })
+
+const isHovering = ref(false)
+const showIcon = computed(() => (isHovering.value ? 'ep:circle-close-filled' : 'ep:close'))
+
+const removeTab = () => {
+  emit('removeTab', props.target)
+}
 </script>
 <template>
   <div :class="prefixCls">
     <div class="outside-circle" :style="itemStyle">
-      <slot></slot>
+      <div class="label">
+        <span>{{ props.label }}</span>
+        <Icon
+          class="icon"
+          :size="14"
+          :icon="showIcon"
+          @mouseover="isHovering = true"
+          @mouseleave="isHovering = false"
+          @click="removeTab"
+        ></Icon>
+      </div>
     </div>
   </div>
 </template>
@@ -33,30 +56,21 @@ const itemStyle = reactive<CSSProperties>({
   width: auto;
 
   .outside-circle {
-    padding: 0 30px;
+    padding: 0 20px;
     text-align: center;
     cursor: pointer;
     position: relative;
-    background: #e91e63;
+    background: var(--el-color-primary-light-9);
     border-radius: 10px 10px 0 0;
 
-    &::before,
-    &::after {
-      content: '';
-      position: absolute;
-      width: 20px;
-      height: 20px;
-      bottom: 0;
+    .label {
+      display: flex;
     }
 
-    &::before {
-      left: -20px;
-      background: radial-gradient(circle at 0 0, transparent 20px, #e91e63 21px);
-    }
-
-    &::after {
-      right: -20px;
-      background: radial-gradient(circle at 100% 0, transparent 20px, #e91e63 21px);
+    .icon {
+      margin-left: 8px;
+      display: flex;
+      align-items: center;
     }
   }
 }

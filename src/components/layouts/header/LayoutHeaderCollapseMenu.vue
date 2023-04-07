@@ -15,7 +15,12 @@ const collapseTrigger = () => {
 </script>
 
 <template>
-  <icon :size="headerIcon.size" :hover="headerIcon.hover" icon="ep:fold" @click="collapseTrigger" />
+  <LayoutIcon
+    :size="headerIcon.size"
+    :hover="headerIcon.hover"
+    icon="ep:fold"
+    @click="collapseTrigger"
+  />
 </template>
 
 <style lang="less"></style>

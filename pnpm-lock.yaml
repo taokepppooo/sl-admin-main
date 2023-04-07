@@ -5,8 +5,8 @@ dependencies:
     specifier: 4.1.0
     version: registry.npmmirror.com/@iconify/vue@4.1.0(vue@3.2.47)
   element-plus:
-    specifier: 2.3.1
-    version: registry.npmmirror.com/element-plus@2.3.1(vue@3.2.47)
+    specifier: 2.3.2
+    version: registry.npmmirror.com/element-plus@2.3.2(vue@3.2.47)
   normalize.css:
     specifier: 8.0.1
     version: registry.npmmirror.com/normalize.css@8.0.1
@@ -934,6 +934,38 @@ packages:
       - '@swc/core'
       - '@swc/wasm'
     dev: true
+
+  registry.npmmirror.com/@commitlint/load@17.5.0:
+    resolution:
+      {
+        integrity: sha512-l+4W8Sx4CD5rYFsrhHH8HP01/8jEP7kKf33Xlx2Uk2out/UKoKPYMOIRcDH5ppT8UXLMV+x6Wm5osdRKKgaD1Q==,
+        registry: https://registry.npm.taobao.org/,
+        tarball: https://registry.npmmirror.com/@commitlint/load/-/load-17.5.0.tgz
+      }
+    name: '@commitlint/load'
+    version: 17.5.0
+    engines: { node: '>=v14' }
+    requiresBuild: true
+    dependencies:
+      '@commitlint/config-validator': registry.npmmirror.com/@commitlint/config-validator@17.4.4
+      '@commitlint/execute-rule': registry.npmmirror.com/@commitlint/execute-rule@17.4.0
+      '@commitlint/resolve-extends': registry.npmmirror.com/@commitlint/resolve-extends@17.4.4
+      '@commitlint/types': registry.npmmirror.com/@commitlint/types@17.4.4
+      '@types/node': registry.npmmirror.com/@types/node@18.14.2
+      chalk: registry.npmmirror.com/chalk@4.1.2
+      cosmiconfig: registry.npmmirror.com/cosmiconfig@8.1.0
+      cosmiconfig-typescript-loader: registry.npmmirror.com/cosmiconfig-typescript-loader@4.3.0(@types/node@18.14.2)(cosmiconfig@8.1.0)(ts-node@10.9.1)(typescript@4.8.4)
+      lodash.isplainobject: registry.npmmirror.com/lodash.isplainobject@4.0.6
+      lodash.merge: registry.npmmirror.com/lodash.merge@4.6.2
+      lodash.uniq: registry.npmmirror.com/lodash.uniq@4.5.0
+      resolve-from: registry.npmmirror.com/resolve-from@5.0.0
+      ts-node: registry.npmmirror.com/ts-node@10.9.1(@types/node@18.14.2)(typescript@4.8.4)
+      typescript: registry.npmmirror.com/typescript@4.8.4
+    transitivePeerDependencies:
+      - '@swc/core'
+      - '@swc/wasm'
+    dev: true
+    optional: true
 
   registry.npmmirror.com/@commitlint/message@17.4.2:
     resolution:
@@ -4222,7 +4254,7 @@ packages:
       longest: registry.npmmirror.com/longest@2.0.1
       word-wrap: registry.npmmirror.com/word-wrap@1.2.3
     optionalDependencies:
-      '@commitlint/load': registry.npmmirror.com/@commitlint/load@17.4.4
+      '@commitlint/load': registry.npmmirror.com/@commitlint/load@17.5.0
     transitivePeerDependencies:
       - '@swc/core'
       - '@swc/wasm'
@@ -4671,16 +4703,16 @@ packages:
     version: 1.4.315
     dev: true
 
-  registry.npmmirror.com/element-plus@2.3.1(vue@3.2.47):
+  registry.npmmirror.com/element-plus@2.3.2(vue@3.2.47):
     resolution:
       {
-        integrity: sha512-IBS7ic1mRyDXpOreRkredV4ByZSuax5HPb0zNOHm4qwKC4wm927yQv+Is0JbzxPzCW5zWaV4PLy9/Gl3E3v59w==,
+        integrity: sha512-NIK0QckKKagdlMm3eLoVoD4Lkfj5ECzpZAxwrRLdm1Yi5qiTU9Guor33+IbIa52z4gHMuhMxgSVS2xAGmjLHsw==,
         registry: https://registry.npm.taobao.org/,
-        tarball: https://registry.npmmirror.com/element-plus/-/element-plus-2.3.1.tgz
+        tarball: https://registry.npmmirror.com/element-plus/-/element-plus-2.3.2.tgz
       }
-    id: registry.npmmirror.com/element-plus/2.3.1
+    id: registry.npmmirror.com/element-plus/2.3.2
     name: element-plus
-    version: 2.3.1
+    version: 2.3.2
     peerDependencies:
       vue: ^3.2.0
     dependencies:

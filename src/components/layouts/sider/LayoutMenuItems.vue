@@ -15,7 +15,7 @@ const { prefixCls } = useNameSpace('layout-menu-items')
   <template v-for="(m, _index) in props.menu" :key="_index">
     <ElSubMenu v-if="m.hasChild" :class="prefixCls" :index="m.title">
       <template #title>
-        <icon class="icon" :size="menuSize" :icon="m.icon" />
+        <LayoutIcon class="icon" :size="menuSize" :icon="m.icon" />
         <span class="title">{{ m.title }}</span>
       </template>
       <LayoutMenuItems :menu="m.children ?? []"></LayoutMenuItems>
