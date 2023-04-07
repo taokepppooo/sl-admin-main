@@ -1,0 +1,11 @@
+.before-after {
+  content: '';
+  position: absolute;
+  width: 10px;
+  height: 15px;
+  bottom: 0;
+}
+
+.before-after-style(@top, @color) {
+  background: radial-gradient(ellipse at @top 0, transparent 10px, @color 11px);
+}

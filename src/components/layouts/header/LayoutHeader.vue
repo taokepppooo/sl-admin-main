@@ -6,7 +6,7 @@ const { prefixCls } = useNameSpace('layouts-header')
 
 <template>
   <div :class="prefixCls">
-    <layout-header-collapse-menu></layout-header-collapse-menu>
+    <LayoutHeaderCollapseMenu></LayoutHeaderCollapseMenu>
   </div>
 </template>
 
