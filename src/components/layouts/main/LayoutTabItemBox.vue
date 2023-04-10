@@ -42,7 +42,7 @@ const removeTab = () => {
           :icon="showIcon"
           @mouseover="isHovering = true"
           @mouseleave="isHovering = false"
-          @click="removeTab"
+          @click.stop="removeTab"
         ></Icon>
       </div>
     </div>

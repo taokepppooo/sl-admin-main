@@ -1,10 +1,11 @@
 <script lang="ts" setup>
 import { useNameSpace } from '@/hooks/core/useStyle'
+import { useLayoutTab } from './src/useLayoutTab'
 
 const { prefixCls } = useNameSpace('layout-tab')
 
-let tabIndex = 2
 const activeTabsValue = ref('1')
+
 const tabs = ref([
   {
     title: 'Tab 1',
@@ -18,34 +19,7 @@ const tabs = ref([
   }
 ])
 
-const addTab = () => {
-  const newTabName = `${++tabIndex}`
-  tabs.value.push({
-    title: 'New Tab',
-    name: newTabName,
-    content: 'New Tab content'
-  })
-  activeTabsValue.value = newTabName
-}
-
-const removeTab = (target: string) => {
-  const items = tabs.value
-  let activeName = activeTabsValue.value
-  if (activeName === target) {
-    items.forEach((item, index) => {
-      if (item.name === target) {
-        const nextTab = items[index + 1] || items[index - 1]
-        if (nextTab) {
-          activeName = nextTab.name
-        }
-      }
-    })
-  }
-
-  tabs.value = items.filter((item) => item.name !== target)
-
-  activeTabsValue.value = activeName
-}
+const { addTab, removeTab } = useLayoutTab({ activeTabsValue, tabs })
 </script>
 
 <template>
@@ -53,10 +27,10 @@ const removeTab = (target: string) => {
     <ElTabs v-model="activeTabsValue" type="card">
       <ElTabPane v-for="item in tabs" :key="item.name" :label="item.title" :name="item.name">
         <template #label>
-          <LayoutTabItemBox :label="item.content" :target="item.name" @remove-tab="removeTab">
+          <LayoutTabItemBox :label="item.title" :target="item.name" @remove-tab="removeTab">
           </LayoutTabItemBox>
         </template>
-        {{ item.content }}
+        {{ item.title }}
       </ElTabPane>
     </ElTabs>
 
