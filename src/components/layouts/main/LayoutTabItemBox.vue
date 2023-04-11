@@ -14,18 +14,15 @@ const props = defineProps({
   itemStyle: { type: Object as PropType<CSSProperties> }
 })
 
-const DEFUALT_HEIGHT = '38px'
+const DEFAULT_HEIGHT = '38px'
 const defaultItemStyle = {
-  height: DEFUALT_HEIGHT,
-  'line-height': DEFUALT_HEIGHT
+  height: DEFAULT_HEIGHT,
+  'line-height': DEFAULT_HEIGHT
 }
 const itemStyle = reactive<CSSProperties>({
   ...defaultItemStyle,
   ...(props.itemStyle || {})
 })
-
-const isHovering = ref(false)
-const showIcon = computed(() => (isHovering.value ? 'ep:circle-close-filled' : 'ep:close'))
 
 const removeTab = () => {
   emit('removeTab', props.target)
@@ -39,9 +36,8 @@ const removeTab = () => {
         <Icon
           class="icon"
           :size="14"
-          :icon="showIcon"
-          @mouseover="isHovering = true"
-          @mouseleave="isHovering = false"
+          icon="ep:close"
+          hover-icon="ep:circle-close-filled"
           @click.stop="removeTab"
         ></Icon>
       </div>
@@ -68,7 +64,7 @@ const removeTab = () => {
     }
 
     .icon {
-      margin-left: 8px;
+      margin-left: 12px;
       display: flex;
       align-items: center;
     }

@@ -1,25 +1,83 @@
 <script lang="ts" setup>
 import { useNameSpace } from '@/hooks/core/useStyle'
 import { useLayoutTab } from './src/useLayoutTab'
+import type { Tab, TabOperate } from './src/types'
 
 const { prefixCls } = useNameSpace('layout-tab')
 
 const activeTabsValue = ref('1')
 
-const tabs = ref([
+const tabs = reactive<Tab[]>([
   {
-    title: 'Tab 1',
-    name: '1',
-    content: 'Tab 1 content2222222222224444444444444444444'
+    title: 'Tab 12222222222222222222222222222',
+    name: '1'
+  },
+  {
+    title: 'Tab 3333333333333333333333333333333333332',
+    name: '2'
+  },
+  {
+    title: 'Tab 244444444444444444444444444',
+    name: '3'
   },
   {
     title: 'Tab 2',
-    name: '2',
-    content: 'Tab 2 content'
+    name: '4'
+  },
+  {
+    title: 'Tab 2',
+    name: '5'
+  },
+  {
+    title: 'Tab 2',
+    name: '6'
+  },
+  {
+    title: 'Tab 2',
+    name: '7'
+  },
+  {
+    title: 'Tab 2',
+    name: '8'
+  },
+  {
+    title: 'Tab 2',
+    name: '9'
+  },
+  {
+    title: 'Tab 2',
+    name: '10'
+  },
+  {
+    title: 'Tab 2',
+    name: '11'
+  },
+  {
+    title: 'Tab 2',
+    name: '12'
+  },
+  {
+    title: 'Tab 2',
+    name: '13'
+  },
+  {
+    title: 'Tab 2',
+    name: '14'
+  },
+  {
+    title: 'Tab 2',
+    name: '15'
   }
 ])
 
-const { addTab, removeTab } = useLayoutTab({ activeTabsValue, tabs })
+const { removeTab } = useLayoutTab({ activeTabsValue, tabs })
+
+const tabsOperate = reactive<TabOperate[]>([
+  {
+    icon: 'ep:menu',
+    event: () => {}
+  }
+])
 </script>
 
 <template>
@@ -35,7 +93,14 @@ const { addTab, removeTab } = useLayoutTab({ activeTabsValue, tabs })
     </ElTabs>
 
     <span class="menu">
-      <ElButton size="small" @click="addTab()"> add tab </ElButton>
+      <Icon
+        v-for="i in tabsOperate"
+        :key="i.icon"
+        :size="14"
+        :icon="i.icon"
+        :hover-styles="{ opacity: 0.7 }"
+        @click="i.event"
+      ></Icon>
     </span>
   </div>
 </template>
@@ -53,7 +118,7 @@ const { addTab, removeTab } = useLayoutTab({ activeTabsValue, tabs })
     width: calc(100% - 80px);
 
     .el-tabs__header {
-      margin: 0;
+      margin: 0 10px;
       border: unset;
 
       .el-tabs__nav {
@@ -132,8 +197,8 @@ const { addTab, removeTab } = useLayoutTab({ activeTabsValue, tabs })
   }
 
   .menu {
-    height: 38px;
-    line-height: 38px;
+    height: 44px;
+    line-height: 44px;
     margin-right: 8px;
   }
 }
