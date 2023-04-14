@@ -55,7 +55,6 @@ const mouseLeave = () => {
 @prefix-cls: ~'@{namespace}-icon';
 
 .@{prefix-cls} {
-  display: flex;
   cursor: pointer;
 }
 </style>

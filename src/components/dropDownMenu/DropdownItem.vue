@@ -42,6 +42,7 @@ const { icon, disabled } = toRefs(props)
     white-space: nowrap;
 
     .item-icon {
+      display: flex;
       margin-right: 3px;
     }
 
