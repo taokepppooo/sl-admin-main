@@ -6,34 +6,45 @@ const { prefixCls } = useNameSpace('drop-down-menu')
 const isMenuVisible = ref(false)
 const menuX = ref(0)
 const menuY = ref(0)
-const popperRef = ref(null)
+const popperRef = ref<HTMLElement | null>(null)
+
+onMounted(() => {
+  document.addEventListener('click', hideMenu)
+  document.addEventListener('mousedown', hideMenu)
+  document.addEventListener('contextmenu', hideMenu)
+})
+
+onUnmounted(() => {
+  document.removeEventListener('click', hideMenu)
+  document.removeEventListener('mousedown', hideMenu)
+  document.removeEventListener('contextmenu', hideMenu)
+})
 
 const showMenu = (event: MouseEvent) => {
   menuX.value = event.clientX
   menuY.value = event.clientY
 
-  isMenuVisible.value = true
-  document.addEventListener('click', closeOtherMenus)
-  document.addEventListener('mousedown', closeOtherMenus)
-  document.addEventListener('mouseup', closeOtherMenus)
   document.addEventListener('contextmenu', closeOtherMenus)
+}
+
+const hideMenu = () => {
+  if (isMenuVisible.value) {
+    isMenuVisible.value = false
+  }
 }
 
 const closeOtherMenus = () => {
   const popper = document.querySelectorAll('body > .popper-wrapper')
   popper.forEach((element) => {
     if (element !== popperRef.value) {
-      element.remove()
+      ;(element as HTMLElement).style.display = 'none'
+
+      document.removeEventListener('contextmenu', closeOtherMenus)
     }
   })
-}
 
-onUnmounted(() => {
-  document.removeEventListener('click', closeOtherMenus)
-  document.removeEventListener('mousedown', closeOtherMenus)
-  document.removeEventListener('mouseup', closeOtherMenus)
-  document.removeEventListener('contextmenu', closeOtherMenus)
-})
+  isMenuVisible.value = true
+}
 </script>
 
 <template>
@@ -42,7 +53,7 @@ onUnmounted(() => {
     <Teleport to="body">
       <Transition name="fade">
         <div
-          v-if="isMenuVisible"
+          v-show="isMenuVisible"
           ref="popperRef"
           class="popper-wrapper"
           :style="{ top: `${menuY}px`, left: `${menuX}px` }"
