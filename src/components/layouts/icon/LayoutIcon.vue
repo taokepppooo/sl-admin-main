@@ -35,7 +35,7 @@ const classBinding = computed(() => ({
     v-if="icon"
     :class="classBinding"
     :style="hoverStyle"
-    @mouseover="isHovering = true"
+    @mouseenter="isHovering = true"
     @mouseleave="isHovering = false"
   >
     <iconify-icon :icon="icon" :height="size" :width="size" />

@@ -24,7 +24,7 @@ export default defineConfig({
     vueJsx(),
     AutoImport({
       resolvers: [ElementPlusResolver()],
-      imports: ['vue', 'vue-router']
+      imports: ['vue', 'vue-router', '@vueuse/core']
     }),
     Components({
       resolvers: [IconsResolver(), ElementPlusResolver()]
