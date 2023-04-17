@@ -46,6 +46,7 @@ const removeTab = () => {
 </template>
 <style lang="less">
 @prefix-cls: ~'@{namespace}-layout-tab-item-box';
+@import url('@/assets/mixins/index.less');
 
 .@{prefix-cls} {
   display: inline-block;
@@ -61,6 +62,7 @@ const removeTab = () => {
 
     .label {
       display: flex;
+      .no-select();
     }
 
     .icon {

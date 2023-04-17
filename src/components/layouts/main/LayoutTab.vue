@@ -1,18 +1,17 @@
 <script lang="ts" setup>
 import { useNameSpace } from '@/hooks/core/useStyle'
 import { useLayoutTab } from './src/useLayoutTab'
-import type { TabOperate } from './src/types'
+import { useLayoutTabDropDownMenu } from './src/useLayoutTabDropDownMenu'
 
 const { prefixCls } = useNameSpace('layout-tab')
+const layoutTabsOperateRef = ref<any>(null)
+
+const width = computed(() => {
+  return `calc(100% - ${layoutTabsOperateRef.value?.getWidth()})`
+})
 
 const { tabs, activeTabsValue, removeTab } = useLayoutTab()
-
-const tabsOperate = reactive<TabOperate[]>([
-  {
-    icon: 'ep:menu',
-    event: () => {}
-  }
-])
+const { dropItems } = useLayoutTabDropDownMenu()
 </script>
 
 <template>
@@ -20,7 +19,7 @@ const tabsOperate = reactive<TabOperate[]>([
     <ElTabs v-model="activeTabsValue" type="card">
       <ElTabPane v-for="item in tabs" :key="item.name" :label="item.title" :name="item.name">
         <template #label>
-          <LayoutTabDropDownMenu>
+          <LayoutTabDropDownMenu :drop-items="dropItems">
             <LayoutTabItemBox :label="item.title" :target="item.name" @remove-tab="removeTab">
             </LayoutTabItemBox>
           </LayoutTabDropDownMenu>
@@ -30,14 +29,7 @@ const tabsOperate = reactive<TabOperate[]>([
     </ElTabs>
 
     <span class="menu">
-      <Icon
-        v-for="i in tabsOperate"
-        :key="i.icon"
-        :size="14"
-        :icon="i.icon"
-        :hover-styles="{ opacity: 0.7 }"
-        @click="i.event"
-      ></Icon>
+      <LayoutTabsOperate ref="layoutTabsOperateRef"></LayoutTabsOperate>
     </span>
   </div>
 </template>
@@ -48,11 +40,12 @@ const tabsOperate = reactive<TabOperate[]>([
 
 .@{prefix-cls} {
   margin-top: 5px;
+  margin-right: 10px;
   display: flex;
   justify-content: space-between;
 
   .el-tabs {
-    width: calc(100% - 80px);
+    width: v-bind(width);
 
     .el-tabs__header {
       margin: 0 10px;

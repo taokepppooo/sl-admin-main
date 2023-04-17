@@ -12,12 +12,12 @@ const { icon, disabled } = toRefs(props)
 </script>
 
 <template>
-  <div :class="prefixCls">
-    <div class="item" :class="{ disabled: disabled }">
+  <div :class="{ [prefixCls]: prefixCls, disabled }">
+    <div class="item" :class="{ 'no-pointer': disabled }">
       <Icon class="item-icon" :icon="icon" :size="16"></Icon>
-      <label>
+      <p class="item-title">
         <slot></slot>
-      </label>
+      </p>
     </div>
   </div>
 </template>
@@ -26,17 +26,23 @@ const { icon, disabled } = toRefs(props)
 @prefix-cls: ~'@{namespace}-drop-down-item';
 @import url('@/assets/mixins/index.less');
 
+.no-pointer {
+  pointer-events: none;
+}
+
 .@{prefix-cls} {
-  font-size: 16px;
+  font-size: 15px;
+  cursor: pointer;
 
   .item {
+    .no-select();
+
     display: flex;
     align-items: center;
     color: var(--drop-menu-text-color);
     height: 36px;
     line-height: 36px;
     padding: 0 10px;
-    cursor: pointer;
     transition: border-color var(--el-transition-duration),
       background-color var(--el-transition-duration), color var(--el-transition-duration);
     white-space: nowrap;
