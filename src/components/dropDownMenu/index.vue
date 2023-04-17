@@ -7,6 +7,7 @@ const isMenuVisible = ref(false)
 const menuX = ref(0)
 const menuY = ref(0)
 const popperRef = ref<HTMLElement | null>(null)
+const { isOutside } = useMouseInElement(popperRef)
 
 onMounted(() => {
   document.addEventListener('click', hideMenu)
@@ -28,6 +29,12 @@ const showMenu = (event: MouseEvent) => {
 }
 
 const hideMenu = () => {
+  if (isMenuVisible.value && isOutside.value) {
+    isMenuVisible.value = false
+  }
+}
+
+const hideMenuByClickItem = () => {
   if (isMenuVisible.value) {
     isMenuVisible.value = false
   }
@@ -45,6 +52,8 @@ const closeOtherMenus = () => {
 
   isMenuVisible.value = true
 }
+
+defineExpose({ hideMenuByClickItem })
 </script>
 
 <template>
