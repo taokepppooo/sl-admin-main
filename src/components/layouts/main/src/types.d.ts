@@ -8,5 +8,5 @@ export interface Tab {
 export interface TabOperate {
   icon: string
   menuItems?: DropDownMenuItem[]
-  event: Function
+  event?: Function
 }

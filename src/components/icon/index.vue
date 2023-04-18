@@ -39,16 +39,16 @@ const mouseLeave = () => {
 </script>
 
 <template>
-  <div v-if="icon" :class="prefixCls">
-    <IconifyIcon
-      :icon="showIcon"
-      :height="size"
-      :width="size"
-      :style="styles.data"
-      @mouseenter="mouseEnter"
-      @mouseleave="mouseLeave"
-    />
-  </div>
+  <IconifyIcon
+    v-if="icon"
+    :class="prefixCls"
+    :icon="showIcon"
+    :height="size"
+    :width="size"
+    :style="styles.data"
+    @mouseenter="mouseEnter"
+    @mouseleave="mouseLeave"
+  />
 </template>
 
 <style lang="less">

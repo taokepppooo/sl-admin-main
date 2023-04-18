@@ -19,8 +19,7 @@ const tabsOperate = reactive<TabOperate[]>([
   },
   {
     icon: 'ep:menu',
-    menuItems: dropItems,
-    event: () => {}
+    menuItems: dropItems
   }
 ])
 
@@ -39,7 +38,7 @@ defineExpose({
   <div :class="prefixCls">
     <div v-for="i in tabsOperate" :key="i.icon">
       <LayoutTabDropDownMenu v-if="i.menuItems" :drop-items="dropItems" trigger="click">
-        <Icon :size="size" :icon="i.icon" :hover-styles="{ opacity: 0.7 }" @click="i.event"></Icon>
+        <Icon :size="size" :icon="i.icon" :hover-styles="{ opacity: 0.7 }"></Icon>
       </LayoutTabDropDownMenu>
       <Icon
         v-else
