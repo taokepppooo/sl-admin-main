@@ -4,6 +4,8 @@ export interface DropDownMenuItem {
   disabled?: boolean
 }
 
+export type Trigger = 'hover' | 'click' | 'contextmenu'
+
 export const useLayoutTabDropDownMenu = () => {
   const dropItems = reactive<DropDownMenuItem[]>([
     {

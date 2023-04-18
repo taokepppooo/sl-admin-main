@@ -1,9 +1,15 @@
 <script setup lang="ts">
+import { useNameSpace } from '@/hooks/core/useStyle'
 import type { PropType } from 'vue'
-import type { DropDownMenuItem } from './src/useLayoutTabDropDownMenu'
+import type { DropDownMenuItem, Trigger } from './src/useLayoutTabDropDownMenu'
+
 const props = defineProps({
-  dropItems: { type: Array as PropType<DropDownMenuItem[]>, require: true }
+  dropItems: { type: Array as PropType<DropDownMenuItem[]>, require: true },
+  trigger: { type: String as PropType<Trigger>, default: 'hover' }
 })
+
+const { prefixCls } = useNameSpace('layout-tab-drop-down-menu')
+provide(prefixCls, props)
 
 const dropDownMenuRef = ref<any>(null)
 const { dropItems } = toRefs(props)

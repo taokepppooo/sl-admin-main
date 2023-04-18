@@ -1,7 +1,9 @@
 <script setup lang="ts">
+import { whenTrigger } from '@/utils/event'
 import { useNameSpace } from '@/hooks/core/useStyle'
 
 const { prefixCls } = useNameSpace('drop-down-menu')
+const { prefixCls: dropDownMenuNs } = useNameSpace('layout-tab-drop-down-menu')
 
 const isMenuVisible = ref(false)
 const menuX = ref(0)
@@ -9,10 +11,14 @@ const menuY = ref(0)
 const popperRef = ref<HTMLElement | null>(null)
 const { isOutside } = useMouseInElement(popperRef)
 
+const { trigger } = inject(dropDownMenuNs) as any
+
 onMounted(() => {
-  document.addEventListener('click', hideMenu)
-  document.addEventListener('mousedown', hideMenu)
-  document.addEventListener('contextmenu', hideMenu)
+  nextTick(() => {
+    document.addEventListener('click', hideMenu)
+    document.addEventListener('mousedown', hideMenu)
+    document.addEventListener('contextmenu', hideMenu)
+  })
 })
 
 onUnmounted(() => {
@@ -22,10 +28,22 @@ onUnmounted(() => {
 })
 
 const showMenu = (event: MouseEvent) => {
+  event.preventDefault()
   menuX.value = event.clientX
   menuY.value = event.clientY
+  document.addEventListener(trigger, closeOtherMenus)
+}
 
-  document.addEventListener('contextmenu', closeOtherMenus)
+const onContextmenu = (event: MouseEvent) => {
+  whenTrigger(trigger, 'contextmenu', () => {
+    showMenu(event)
+  })
+}
+
+const onClick = (event: MouseEvent) => {
+  whenTrigger(trigger, 'click', () => {
+    showMenu(event)
+  })
 }
 
 const hideMenu = () => {
@@ -46,7 +64,7 @@ const closeOtherMenus = () => {
     if (element !== popperRef.value) {
       ;(element as HTMLElement).style.display = 'none'
 
-      document.removeEventListener('contextmenu', closeOtherMenus)
+      document.removeEventListener(trigger, closeOtherMenus)
     }
   })
 
@@ -57,7 +75,7 @@ defineExpose({ hideMenuByClickItem })
 </script>
 
 <template>
-  <div :class="prefixCls" @contextmenu.prevent="showMenu($event)">
+  <div :class="prefixCls" @contextmenu="onContextmenu" @click="onClick">
     <slot></slot>
     <Teleport to="body">
       <Transition name="fade">
