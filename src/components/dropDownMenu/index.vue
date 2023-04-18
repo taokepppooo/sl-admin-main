@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { subtract } from 'lodash-es'
 import { whenTrigger } from '@/utils/event'
 import { useNameSpace } from '@/hooks/core/useStyle'
 
@@ -6,8 +7,8 @@ const { prefixCls } = useNameSpace('drop-down-menu')
 const { prefixCls: dropDownMenuNs } = useNameSpace('layout-tab-drop-down-menu')
 
 const isMenuVisible = ref(false)
-const menuX = ref(0)
-const menuY = ref(0)
+const menuLeft = ref(0)
+const menuTop = ref(0)
 const popperRef = ref<HTMLElement | null>(null)
 const { isOutside } = useMouseInElement(popperRef)
 
@@ -29,9 +30,26 @@ onUnmounted(() => {
 
 const showMenu = (event: MouseEvent) => {
   event.preventDefault()
-  menuX.value = event.clientX
-  menuY.value = event.clientY
+
+  const { width } = useWindowSize()
+  const defaultOffset = 5
+
   document.addEventListener(trigger, closeOtherMenus)
+
+  const handleTimeout = () => {
+    const popperWidth = popperRef.value?.offsetWidth || 0
+    const isPopperWidthTooBig = subtract(width.value, event.clientX) < popperWidth
+
+    if (isPopperWidthTooBig) {
+      menuLeft.value = subtract(width.value, popperWidth)
+    } else {
+      menuLeft.value = event.clientX
+    }
+
+    menuTop.value = event.clientY + defaultOffset
+  }
+
+  setTimeout(handleTimeout)
 }
 
 const onContextmenu = (event: MouseEvent) => {
@@ -59,11 +77,11 @@ const hideMenuByClickItem = () => {
 }
 
 const closeOtherMenus = () => {
-  const popper = document.querySelectorAll('body > .popper-wrapper')
+  const popper = Array.from(document.querySelectorAll('body > .popper-wrapper'))
+
   popper.forEach((element) => {
     if (element !== popperRef.value) {
       ;(element as HTMLElement).style.display = 'none'
-
       document.removeEventListener(trigger, closeOtherMenus)
     }
   })
@@ -75,7 +93,7 @@ defineExpose({ hideMenuByClickItem })
 </script>
 
 <template>
-  <div :class="prefixCls" @contextmenu="onContextmenu" @click="onClick">
+  <span :class="prefixCls" @contextmenu="onContextmenu" @click="onClick">
     <slot></slot>
     <Teleport to="body">
       <Transition name="fade">
@@ -83,17 +101,21 @@ defineExpose({ hideMenuByClickItem })
           v-show="isMenuVisible"
           ref="popperRef"
           class="popper-wrapper"
-          :style="{ top: `${menuY}px`, left: `${menuX}px` }"
+          :style="{ top: `${menuTop}px`, left: `${menuLeft}px` }"
         >
           <slot name="menu"></slot>
         </div>
       </Transition>
     </Teleport>
-  </div>
+  </span>
 </template>
 
 <style lang="less">
 @prefix-cls: ~'@{namespace}-drop-down-menu';
+
+.@{prefix-cls} {
+  display: inline-flex;
+}
 
 .popper-wrapper {
   position: fixed;

@@ -62,6 +62,7 @@ const removeTab = () => {
 
     .label {
       display: flex;
+      align-items: center;
       .no-select();
     }
 
