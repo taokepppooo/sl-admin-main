@@ -7,7 +7,7 @@ const { prefixCls } = useNameSpace('layout-tabs-operate')
 
 const gapNumber = 15
 const gap = ref(`${gapNumber}px`)
-const size = ref(14)
+const size = ref(15)
 
 const tabsOperate = reactive<TabOperate[]>([
   {

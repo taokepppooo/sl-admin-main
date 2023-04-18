@@ -24,7 +24,6 @@ const { dropItems } = useLayoutTabDropDownMenu()
             </LayoutTabItemBox>
           </LayoutTabDropDownMenu>
         </template>
-        {{ item.title }}
       </ElTabPane>
     </ElTabs>
 
@@ -38,7 +37,10 @@ const { dropItems } = useLayoutTabDropDownMenu()
 @prefix-cls: ~'@{namespace}-layout-tab';
 @import url('./src/index.less');
 
+@tab-height: 40px;
+
 .@{prefix-cls} {
+  border-bottom: 1px solid #f6f6f6;
   margin-top: 5px;
   margin-right: 10px;
   display: flex;
@@ -48,87 +50,95 @@ const { dropItems } = useLayoutTabDropDownMenu()
     width: v-bind(width);
 
     .el-tabs__header {
-      margin: 0 10px;
+      padding: 0 10px;
+      height: @tab-height;
       border: unset;
+      margin: 0;
 
-      .el-tabs__nav {
-        border: unset;
+      .el-tabs__nav-wrap {
+        margin-bottom: 0;
 
-        .el-tabs__item {
+        .el-tabs__nav-prev,
+        .el-tabs__nav-next {
+          line-height: @tab-height;
+        }
+
+        .el-tabs__nav {
           border: unset;
-          padding: 0 15px;
-        }
+          margin-top: 1px;
 
-        .el-tabs__item.is-active {
-          position: relative;
-          z-index: 2;
+          .el-tabs__item {
+            border: unset;
+            padding: 0 15px;
+          }
 
-          .outside-circle {
-            &::before,
-            &::after {
-              .before-after();
-            }
+          .el-tabs__item.is-active {
+            position: relative;
+            z-index: 2;
 
-            &::before {
-              left: -10px;
-              .before-after-style(0, var(--el-color-primary-light-9));
-            }
+            .outside-circle {
+              &::before,
+              &::after {
+                .before-after();
+              }
 
-            &::after {
-              right: -10px;
-              .before-after-style(100%, var(--el-color-primary-light-9));
+              &::before {
+                left: -10px;
+                .before-after-style(0, var(--el-color-primary-light-9));
+              }
+
+              &::after {
+                right: -10px;
+                .before-after-style(100%, var(--el-color-primary-light-9));
+              }
             }
           }
-        }
 
-        .el-tabs__item:not(.is-active) {
-          position: relative;
-          z-index: 1;
+          .el-tabs__item:not(.is-active) {
+            position: relative;
+            z-index: 1;
 
-          .outside-circle {
-            background-color: unset;
-            color: var(--el-nav-tab-item-hover-color);
-
-            &:hover {
-              background: var(--el-nav-tab-item-hover-bg);
+            .outside-circle {
+              background-color: unset;
               color: var(--el-nav-tab-item-hover-color);
-            }
 
-            &:hover::before,
-            &:hover::after {
-              .before-after();
+              &:hover {
+                background: var(--el-nav-tab-item-hover-bg);
+                color: var(--el-nav-tab-item-hover-color);
+              }
 
-              background: var(--el-nav-tab-item-hover-bg);
-            }
+              &:hover::before,
+              &:hover::after {
+                .before-after();
 
-            &:hover::before {
-              left: -10px;
+                background: var(--el-nav-tab-item-hover-bg);
+              }
 
-              .before-after-style(0, var(--el-nav-tab-item-hover-bg));
-            }
+              &:hover::before {
+                left: -10px;
 
-            &:hover::after {
-              right: -10px;
+                .before-after-style(0, var(--el-nav-tab-item-hover-bg));
+              }
 
-              .before-after-style(100%, var(--el-nav-tab-item-hover-bg));
+              &:hover::after {
+                right: -10px;
+
+                .before-after-style(100%, var(--el-nav-tab-item-hover-bg));
+              }
             }
           }
-        }
 
-        .el-tabs__item:not(:first-child) {
-          margin-left: -40px;
+          .el-tabs__item:not(:first-child) {
+            margin-left: -40px;
+          }
         }
       }
-    }
-
-    .el-tabs__content {
-      padding: 10px;
     }
   }
 
   .menu {
-    height: 44px;
-    line-height: 44px;
+    height: @tab-height;
+    line-height: @tab-height;
     margin-right: 8px;
   }
 }
