@@ -19,7 +19,7 @@ const { dropItems } = useLayoutTabDropDownMenu()
     <ElTabs v-model="activeTabsValue" type="card">
       <ElTabPane v-for="item in tabs" :key="item.name" :label="item.title" :name="item.name">
         <template #label>
-          <LayoutTabDropDownMenu :drop-items="dropItems">
+          <LayoutTabDropDownMenu trigger="contextmenu" :drop-items="dropItems">
             <LayoutTabItemBox :label="item.title" :target="item.name" @remove-tab="removeTab">
             </LayoutTabItemBox>
           </LayoutTabDropDownMenu>
