@@ -2,9 +2,15 @@
 import { useNameSpace } from '@/hooks/core/useStyle'
 import { useLayoutTab } from './src/useLayoutTab'
 import { useLayoutTabDropDownMenu } from './src/useLayoutTabDropDownMenu'
+import { useLayoutTabDrag } from './src/useLayoutTabDrag'
 
 const { prefixCls } = useNameSpace('layout-tab')
 const layoutTabsOperateRef = ref<any>(null)
+
+const tabsRef = ref<any>(null)
+nextTick(() => {
+  useLayoutTabDrag(tabsRef.value?.$el.querySelectorAll('.el-tabs__nav')?.[0])
+})
 
 const width = computed(() => {
   return `calc(100% - ${layoutTabsOperateRef.value?.getWidth()})`
@@ -16,7 +22,7 @@ const { dropItems } = useLayoutTabDropDownMenu()
 
 <template>
   <div :class="prefixCls">
-    <ElTabs v-model="activeTabsValue" type="card">
+    <ElTabs ref="tabsRef" v-model="activeTabsValue" type="card">
       <ElTabPane v-for="item in tabs" :key="item.name" :label="item.title" :name="item.name">
         <template #label>
           <LayoutTabDropDownMenu trigger="contextmenu" :drop-items="dropItems">
