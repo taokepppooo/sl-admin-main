@@ -9,7 +9,21 @@ const layoutTabsOperateRef = ref<any>(null)
 
 const tabsRef = ref<any>(null)
 nextTick(() => {
-  useLayoutTabDrag(tabsRef.value?.$el.querySelectorAll('.el-tabs__nav')?.[0])
+  const element = tabsRef.value?.$el.querySelectorAll('.el-tabs__nav')?.[0]
+  const tabItemElement = element.querySelectorAll('.tab-item')
+  useLayoutTabDrag(element, {
+    onStart: () => {
+      // 解决拖动是hover触发问题
+      tabItemElement.forEach((child: HTMLElement) => {
+        child.style.pointerEvents = 'none'
+      })
+    },
+    onEnd: () => {
+      tabItemElement.forEach((child: HTMLElement) => {
+        child.style.pointerEvents = 'auto'
+      })
+    }
+  })
 })
 
 const width = computed(() => {
@@ -26,7 +40,12 @@ const { dropItems } = useLayoutTabDropDownMenu()
       <ElTabPane v-for="item in tabs" :key="item.name" :label="item.title" :name="item.name">
         <template #label>
           <LayoutTabDropDownMenu trigger="contextmenu" :drop-items="dropItems">
-            <LayoutTabItemBox :label="item.title" :target="item.name" @remove-tab="removeTab">
+            <LayoutTabItemBox
+              class="tab-item"
+              :label="item.title"
+              :target="item.name"
+              @remove-tab="removeTab"
+            >
             </LayoutTabItemBox>
           </LayoutTabDropDownMenu>
         </template>

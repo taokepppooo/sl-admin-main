@@ -1,7 +1,7 @@
-import type { Options } from 'sortablejs'
+import type { SortableOptions } from 'sortablejs'
 
-export const useSortable = (el: HTMLElement, options?: Options) => {
-  ;(async () => {
+export const useSortable = (el: HTMLElement, options?: SortableOptions) => {
+  const init = async () => {
     if (!el) return
 
     const Sortable = (await import('sortablejs')).default
@@ -11,5 +11,9 @@ export const useSortable = (el: HTMLElement, options?: Options) => {
       delayOnTouchOnly: true,
       ...options
     })
-  })()
+  }
+
+  return {
+    init
+  }
 }
